@@ -1,26 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showAllCards } from '../actions/cards'
+import { loadCards } from '../actions/Cards'
 // import Board from './Board.js';
 import './App.scss';
-import data from './dummyData.json'
 
 class App extends Component {
 
   componentDidMount(){
-    const { onAddCard } = this.props;
-    onAddCard(data);
+    this.props.loadCards();
   }
 
   render() {
-    console.log('this.props', this.props);
     return (
       <div>
         <h1>hello</h1>
-        {this.props.cards.map((card, i)=> {
+        {this.props.cardData.map((card, i)=> {
           return (
-            <div>{i}</div>,
-            <div>{card.task}</div>
+            <div key={i}>{card.task}</div>
           )
         })}
       </div>
@@ -29,15 +25,14 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('state', state);
   return {
-    cards: state.cards
+    cardData: state.cardData
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddCard: (x) => dispatch(showAllCards(x))
+    loadCards: () => dispatch(loadCards())
   }
 }
 

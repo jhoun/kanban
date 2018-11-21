@@ -1,6 +1,11 @@
-export const showAllCards = (data) => dispatch => {
-  dispatch({
-    type: 'GET_CARDS',
-    card: data
-  })
+import data from './dummyData.json'
+
+
+export const loadCards = () => {
+  return dispatch => {
+     dispatch({
+      type: 'LOAD_CARDS',
+      card: data
+    })
+  }
 }
