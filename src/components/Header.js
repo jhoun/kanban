@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
+import NewTaskForm from './NewTaskForm';
 import './Header.scss';
 
 class Header extends Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state =  {
       showModal: false
     };
@@ -13,6 +13,8 @@ class Header extends Component {
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   };
+
+
 
   handleOpenModal() {
     this.setState({
@@ -31,10 +33,8 @@ class Header extends Component {
       <div className="header-container">
         <div className="header__title">Kanban</div>
         <div onClick={this.handleOpenModal} className="header__new-task-btn">New Task</div>
-        <ReactModal
-          isOpen={this.state.showModal}
-          contentLabel="Modal"
-        >
+        <ReactModal isOpen={this.state.showModal} contentLabel="Modal">
+          <NewTaskForm />
           <button onClick={this.handleCloseModal}>Close Modal</button>
         </ReactModal>
       </div>
