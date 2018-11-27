@@ -9,3 +9,12 @@ export const loadCards = () => {
     })
   }
 }
+
+export const addCard = () => {
+  return dispatch => {
+    dispatch({
+      type: 'ADD_CARD',
+      card: data
+    })
+  }
+}

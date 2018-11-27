@@ -5,11 +5,6 @@ import Column from './Column';
 import './Board.scss';
 
 class Board extends Component {
-  constructor() {
-    super()
-
-    this.filterStatus = this.filterStatus.bind(this);
-  }
 
   componentDidMount() {
     this.props.loadCards();

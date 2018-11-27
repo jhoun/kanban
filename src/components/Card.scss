@@ -1,0 +1,14 @@
+.card-container{
+  width: 100%;
+  height: 100%;
+  background-color: pink;
+
+  .card{
+    margin: 10px;
+    background-color: aqua;
+
+    &__task{
+      font-size: 1.5rem;
+    }
+  }
+}
