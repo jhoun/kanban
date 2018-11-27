@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Board from './Board'
+import Board from './Board';
+import Header from './Header';
 import './App.scss';
 
 class App extends Component {
@@ -7,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <div className="app-container">
-        <h1>Header</h1>
+        <Header />
         <Board />
       </div>
     );

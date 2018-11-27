@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from './Card.js';
 import './Column.scss';
 
-class Column extends Component {
-
-  render() {
+const Column = props => {
     return (
       <div className="column">
-        <Card cardData={this.props.cardData} />
+        <Card cardData={props.cardData} />
       </div>
     );
-  }
-
 }
 
 

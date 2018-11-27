@@ -2,9 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store';
-import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import ReactModal from 'react-modal';
+import './index.css';
+
+ReactModal.setAppElement('#root');
 
 ReactDOM.render(
   <Provider store={configureStore()}>
