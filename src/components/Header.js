@@ -14,8 +14,6 @@ class Header extends Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   };
 
-
-
   handleOpenModal() {
     this.setState({
       showModal: true
@@ -33,9 +31,14 @@ class Header extends Component {
       <div className="header-container">
         <div className="header__title">Kanban</div>
         <div onClick={this.handleOpenModal} className="header__new-task-btn">New Task</div>
-        <ReactModal isOpen={this.state.showModal} contentLabel="Modal">
-          <NewTaskForm />
-          <button onClick={this.handleCloseModal}>Close Modal</button>
+        <ReactModal
+          isOpen={this.state.showModal}
+          contentLabel="Modal" className="modal"
+          overlayClassName="Overlay"
+          onRequestClose={this.handleCloseModal}
+          shouldCloseOnOverlayClick={true}
+        >
+          <NewTaskForm handleCloseModal={this.handleCloseModal}/>
         </ReactModal>
       </div>
     )

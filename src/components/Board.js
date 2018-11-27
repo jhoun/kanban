@@ -34,7 +34,6 @@ class Board extends Component {
       </div>
     );
   }
-
 }
 
 const mapStateToProps = state => {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCard } from '../actions/Cards';
+import './NewTaskForm.scss';
 
 class NewTaskForm extends Component {
   constructor(props) {
@@ -37,8 +38,9 @@ class NewTaskForm extends Component {
       createdBy,
       assignedTo
     }
-    this.props.addCard(newCardData);
 
+    this.props.addCard(newCardData);
+    this.props.handleCloseModal();
   }
 
   render(){
