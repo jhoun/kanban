@@ -1,6 +1,5 @@
 import data from './dummyData.json'
 
-
 export const loadCards = () => {
   return dispatch => {
      dispatch({
@@ -10,7 +9,8 @@ export const loadCards = () => {
   }
 }
 
-export const addCard = () => {
+export const addCard = (data) => {
+  console.log('data', data);
   return dispatch => {
     dispatch({
       type: 'ADD_CARD',

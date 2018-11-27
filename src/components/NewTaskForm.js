@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { addCard } from '../actions/Cards';
 
 class NewTaskForm extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class NewTaskForm extends Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    console.log('event', event.target.name);
+
     this.setState({
       [name]: value
     })
@@ -29,7 +30,14 @@ class NewTaskForm extends Component {
     event.preventDefault();
     const { task, priority, status, createdBy, assignedTo } = this.state;
 
-
+    const newCardData = {
+      task,
+      priority,
+      status,
+      createdBy,
+      assignedTo
+    }
+    this.props.addCard(newCardData);
 
   }
 
@@ -62,4 +70,16 @@ class NewTaskForm extends Component {
   }
 }
 
-export default NewTaskForm;
+const mapStateToProps = state => {
+  return {
+    cardData: state.cardData
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addCard: (data) => dispatch(addCard(data))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewTaskForm);
