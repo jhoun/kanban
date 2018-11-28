@@ -13,6 +13,9 @@ export default (state = [], action) => {
         return Object.assign({}, ...state, (card.id === action.card.id) ? action.card : card )
       });
 
+    case 'DELETE_CARD':
+      return state.filter(card => card.id !== action.id);
+
     default:
       return state
   }

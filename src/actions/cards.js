@@ -1,28 +1,37 @@
-import data from './dummyData.json'
+import card from './dummyData.json'
 
 export const loadCards = () => {
   return dispatch => {
      dispatch({
       type: 'LOAD_CARDS',
-      card: data
+      card
     })
   }
 }
 
-export const addCard = (data) => {
+export const addCard = (card) => {
   return dispatch => {
     dispatch({
       type: 'ADD_CARD',
-      card: data
+      card
     })
   }
 }
 
-export const editCard = (data) => {
+export const editCard = (card) => {
   return dispatch => {
     dispatch({
       type: 'EDIT_CARD',
-      card: data
+      card
+    })
+  }
+}
+
+export const deleteCard = (id) => {
+  return dispatch => {
+    dispatch({
+      type: 'DELETE_CARD',
+      id
     })
   }
 }

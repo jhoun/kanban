@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
+import { connect } from 'react-redux';
+import { deleteCard } from '../actions/Cards'
 import EditTaskForm from './EditTaskForm';
 import './Card.scss';
 
@@ -8,11 +10,13 @@ class Cards extends Component {
     super(props)
 
     this.state = {
-      showModal: false
+      showModal: false,
+      id: ''
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleOpenModal() {
@@ -25,6 +29,11 @@ class Cards extends Component {
     this.setState({
       showModal: false
     })
+  }
+
+  handleDelete(event) {
+    event.preventDefault();
+    this.props.deleteCard(this.props.id)
   }
 
   renderCard(){
@@ -45,6 +54,7 @@ class Cards extends Component {
           >
             <EditTaskForm selectedCardData={this.props} handleCloseModal={this.handleCloseModal}  />
           </ReactModal>
+          <button onClick={this.handleDelete}>Delete</button>
         </div>
       )
 
@@ -59,4 +69,17 @@ class Cards extends Component {
   }
 }
 
-export default Cards;
+const mapStateToProps = state => {
+  return {
+    cardData: state.cardData
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteCard: (data) => dispatch(deleteCard(data))
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cards);
