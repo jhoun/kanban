@@ -21,15 +21,15 @@ class Board extends Component {
       <div className="board-container">
         <div className="column-container">
           <div className="column-title">IN QUEUE</div>
-          <Column className="column" cardData={this.filterStatus('queue')} />
+          <Column cardData={this.filterStatus('queue')} />
         </div>
         <div className="column-container">
           <div className="column-title">IN PROGRESS</div>
-          <Column className="column" cardData={this.filterStatus('progress')} />
+          <Column cardData={this.filterStatus('progress')} />
         </div>
         <div className="column-container">
           <div className="column-title">DONE</div>
-          <Column className="column" cardData={this.filterStatus('done')} />
+          <Column cardData={this.filterStatus('done')} />
         </div>
       </div>
     );

@@ -8,6 +8,11 @@ export default (state = [], action) => {
     case 'ADD_CARD':
       return [...state, action.card];
 
+    case 'EDIT_CARD':
+      return state.map(card => {
+        return Object.assign({}, ...state, (card.id === action.card.id) ? action.card : card )
+      });
+
     default:
       return state
   }

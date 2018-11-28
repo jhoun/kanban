@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "task": "Walk the dog",
     "priority": "high",
     "status": "queue",
@@ -7,6 +8,7 @@
     "assignedTo": "ej"
   },
   {
+    "id": 2,
     "task": "Take out the trash",
     "priority": "high",
     "status": "done",
@@ -14,6 +16,7 @@
     "assignedTo": "ej"
   },
   {
+    "id": 3,
     "task": "Cook Dinner",
     "priority": "high",
     "status": "queue",

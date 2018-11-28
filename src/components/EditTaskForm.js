@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCard } from '../actions/Cards';
-import './NewTaskForm.scss';
+import { editCard } from '../actions/Cards'
 
-class NewTaskForm extends Component {
-  constructor(props) {
-    super(props);
+class EditTaskForm extends Component {
+  constructor(props){
+    super(props)
+
+    const { id, task, priority, status, createdBy, assignedTo } = props.selectedCardData;
+
     this.state = {
-      task: '',
-      priority: '',
-      status: '',
-      createdBy: '',
-      assignedTo: ''
-    };
+      id,
+      task,
+      priority,
+      status,
+      createdBy,
+      assignedTo
+    }
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,19 +33,10 @@ class NewTaskForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { task, priority, status, createdBy, assignedTo } = this.state;
-
-    const newCardData = {
-      task,
-      priority,
-      status,
-      createdBy,
-      assignedTo
-    }
-
-    this.props.addCard(newCardData);
+    this.props.editCard(this.state);
     this.props.handleCloseModal();
   }
+
 
   render(){
     return (
@@ -78,10 +73,10 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispttchToProps = dispatch => {
   return {
-    addCard: (data) => dispatch(addCard(data))
+    editCard: (data) => dispatch(editCard(data))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewTaskForm);
+export default connect(mapStateToProps, mapDispttchToProps)(EditTaskForm);

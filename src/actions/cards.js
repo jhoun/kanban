@@ -10,10 +10,18 @@ export const loadCards = () => {
 }
 
 export const addCard = (data) => {
-  console.log('data', data);
   return dispatch => {
     dispatch({
       type: 'ADD_CARD',
+      card: data
+    })
+  }
+}
+
+export const editCard = (data) => {
+  return dispatch => {
+    dispatch({
+      type: 'EDIT_CARD',
       card: data
     })
   }
