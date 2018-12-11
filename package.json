@@ -5,6 +5,7 @@
   "dependencies": {
     "node-sass": "^4.10.0",
     "react": "^16.6.3",
+    "react-beautiful-dnd": "^10.0.2",
     "react-dom": "^16.6.3",
     "react-modal": "^3.6.1",
     "react-redux": "^5.1.1",

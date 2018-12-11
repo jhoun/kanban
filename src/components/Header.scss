@@ -2,17 +2,30 @@
   display:flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: #4C525A;
+  color: white;
+  font-size: 1.1rem;
   width: 100%;
-  height: 3vw;
+  height: 4vw;
 
   .header__title {
-    margin-left: 15px;
+    margin-left: 30px;
   }
 
   .header__new-task-btn {
-    margin-right: 20px;
+    transition: box-shadow .5s ease;
+    margin-right: 30px;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+
+     &:hover {
+      box-shadow: inset 0 0 0 1.5px white;
+    }
   }
+
+
 
 }
 

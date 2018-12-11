@@ -29,8 +29,8 @@ class Header extends Component {
   render(){
     return (
       <div className="header-container">
-        <div className="header__title">Kanban</div>
-        <div onClick={this.handleOpenModal} className="header__new-task-btn">New Task</div>
+        <div className="header__title">KANBAN</div>
+        <div onClick={this.handleOpenModal} className="header__new-task-btn">+ NEW TASK</div>
         <ReactModal
           isOpen={this.state.showModal}
           contentLabel="Modal" className="modal"
