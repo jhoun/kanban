@@ -38,7 +38,7 @@ class Cards extends Component {
 
   renderCard(){
       return (
-        <div className="card">
+        <div className={`card ${this.props.status}`}>
           <div className="card__task">{this.props.task}</div>
           <div className="card__priority">{this.props.priority}</div>
           <div className="card__status">{this.props.status}</div>

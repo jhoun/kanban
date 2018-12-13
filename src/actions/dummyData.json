@@ -22,5 +22,13 @@
     "status": "queue",
     "createdBy": "jay",
     "assignedTo": "ej"
+  },
+  {
+    "id": 3,
+    "task": "Cook Dinner",
+    "priority": "high",
+    "status": "progress",
+    "createdBy": "jay",
+    "assignedTo": "ej"
   }
 ]

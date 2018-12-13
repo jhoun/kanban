@@ -4,6 +4,7 @@ import './Column.scss';
 
 const Column = props => {
     const renderCard = props.cardData.map((card, i) => {
+      console.log('card', card);
           return <Card
             key = {i}
             id={card.id}

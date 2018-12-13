@@ -1,13 +1,27 @@
-.card-container{
+.card-container {
   width: 100%;
-  background-color: pink;
 
-  .card{
+  .card {
     margin: 10px;
-    background-color: aqua;
+    padding: 15px;
 
     &__task{
       font-size: 1.5rem;
     }
+  }
+
+  .queue {
+    background-color: #FDF1DE;
+    border: 3px solid darken( #FDF1DE, 20%);
+  }
+
+  .progress {
+    background-color: #E5FDCA;
+    border: 3px solid darken( #E5FDCA, 20%);
+  }
+
+  .done {
+    background-color: #F7F8FC;
+    border: 3px solid darken( #F7F8FC, 20%);
   }
 }
