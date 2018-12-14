@@ -33,11 +33,12 @@ class Header extends Component {
         <div onClick={this.handleOpenModal} className="header__new-task-btn">+ NEW TASK</div>
         <ReactModal
           isOpen={this.state.showModal}
-          contentLabel="Modal" className="modal"
-          overlayClassName="Overlay"
+          contentLabel="modal" className="modal"
+          overlayClassName="overlay"
           onRequestClose={this.handleCloseModal}
           shouldCloseOnOverlayClick={true}
         >
+          <div class="justTransparentMask"></div>
           <NewTaskForm handleCloseModal={this.handleCloseModal}/>
         </ReactModal>
       </div>

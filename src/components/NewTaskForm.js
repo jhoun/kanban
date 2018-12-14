@@ -43,30 +43,64 @@ class NewTaskForm extends Component {
     this.props.handleCloseModal();
   }
 
-  render(){
+  render() {
     return (
       <form onSubmit={this.handleSubmit} className="form">
-        <label>
-          Task Name:
-              <input type="text" name="task" value={this.state.task} onChange={this.handleChange} />
+        <div className="form-title">CREATE NEW TASK</div>
+        <label className="label">
+          <input
+            type="text"
+            name="task"
+            className="form-input"
+            placeholder="Task Name"
+            value={this.state.task} onChange={this.handleChange}
+          />
         </label>
-        <label>
-          Priority:
-              <input type="text" name="priority" value={this.state.priority} onChange={this.handleChange} />
+        <label className="label">
+          <input
+            type="text"
+            name="priority"
+            className="form-input"
+            placeholder="Priority"
+            value={this.state.priority}
+            onChange={this.handleChange}
+          />
         </label>
-        <label>
-          Status:
-              <input type="text" name="status" value={this.state.status} onChange={this.handleChange} />
+        <label className="label">
+          <input
+            type="text"
+            name="status"
+            className="form-input"
+            placeholder="Status"
+            value={this.state.status}
+            onChange={this.handleChange}
+          />
         </label>
-        <label>
-          Created By:
-              <input type="text" name="createdBy" value={this.state.createdBy} onChange={this.handleChange} />
+        <label className="label">
+          <input
+            type="text"
+            name="createdBy"
+            className="form-input"
+            placeholder="Created By"
+            value={this.state.createdBy}
+            onChange={this.handleChange}
+          />
         </label>
-        <label>
-          Assigned To:
-              <input type="text" name="assignedTo" value={this.state.assignedTo} onChange={this.handleChange} />
+        <label className="label">
+          <input
+            type="text"
+            name="assignedTo"
+            className="form-input"
+            placeholder="Assigned To"
+            value={this.state.assignedTo}
+            onChange={this.handleChange}
+          />
         </label>
-        <input type="submit" value="Submit" />
+        <input
+          type="submit"
+          value="Submit"
+          className="submit"
+        />
       </form>
     )
   }

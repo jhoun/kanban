@@ -1,4 +1,53 @@
 .form {
   display: flex;
   flex-direction: column;
+  text-align: center;
+
+    .form-title {
+      font-size: 4rem;
+      font-weight: 400;
+      padding: 1.5rem 0;
+      color: white;
+    }
+
+    .form-input {
+      height: 5rem;
+      width: 80%;
+      margin: .2rem 0;
+    }
+    .form-input[type="text"] {
+      font-size: 2rem;
+      padding-left: 1rem;
+      font-family: 'Raleway', sans-serif;
+      background-color: #4C525A;
+      color: white;
+    }
+
+    .form-input[type=text]:focus {
+      outline:none;
+    }
+
+    .form-input,[contenteditable] {
+      caret-color:white;
+    }
+
+    ::placeholder {
+      color: white;
+    }
+
+    .submit {
+      width: 60%;
+      height: 5rem;
+      font-size: 2rem;
+      font-family: 'Raleway', sans-serif;
+      margin: 1.5rem auto 0;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .submit:hover {
+      background-color: #4C525A;
+      color: white;
+      border: 4px solid white;
+    }
 }
