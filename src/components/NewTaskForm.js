@@ -53,6 +53,8 @@ class NewTaskForm extends Component {
             name="task"
             className="form-input"
             placeholder="Task Name"
+            onFocus={(e) => e.target.placeholder = ""}
+            onBlur={(e) => e.target.placeholder = `Task Name`}
             value={this.state.task} onChange={this.handleChange}
           />
         </label>
@@ -62,6 +64,8 @@ class NewTaskForm extends Component {
             name="priority"
             className="form-input"
             placeholder="Priority"
+            onFocus={(e) => e.target.placeholder = ""}
+            onBlur={(e) => e.target.placeholder = `Priority`}
             value={this.state.priority}
             onChange={this.handleChange}
           />
@@ -72,6 +76,8 @@ class NewTaskForm extends Component {
             name="status"
             className="form-input"
             placeholder="Status"
+            onFocus={(e) => e.target.placeholder = ""}
+            onBlur={(e) => e.target.placeholder = `Status`}
             value={this.state.status}
             onChange={this.handleChange}
           />
@@ -82,6 +88,8 @@ class NewTaskForm extends Component {
             name="createdBy"
             className="form-input"
             placeholder="Created By"
+            onFocus={(e) => e.target.placeholder = ""}
+            onBlur={(e) => e.target.placeholder = `Created By`}
             value={this.state.createdBy}
             onChange={this.handleChange}
           />
@@ -92,6 +100,8 @@ class NewTaskForm extends Component {
             name="assignedTo"
             className="form-input"
             placeholder="Assigned To"
+            onFocus={(e) => e.target.placeholder = ""}
+            onBlur={(e) => e.target.placeholder = `Assigned To`}
             value={this.state.assignedTo}
             onChange={this.handleChange}
           />

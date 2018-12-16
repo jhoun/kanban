@@ -38,7 +38,6 @@ class Header extends Component {
           onRequestClose={this.handleCloseModal}
           shouldCloseOnOverlayClick={true}
         >
-          <div class="justTransparentMask"></div>
           <NewTaskForm handleCloseModal={this.handleCloseModal}/>
         </ReactModal>
       </div>

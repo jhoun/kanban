@@ -48,7 +48,7 @@ class Cards extends Component {
           <ReactModal
             isOpen={this.state.showModal}
             contentLabel="Modal" className="modal"
-            overlayClassName="Overlay"
+            overlayClassName="overlay"
             onRequestClose={this.handleCloseModal}
             shouldCloseOnOverlayClick={true}
           >
