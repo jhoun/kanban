@@ -72,7 +72,7 @@ class EditTaskForm extends Component {
         <label>
           <Select
             name="priority"
-            placeholder={this.state.priority}
+            placeholder={`Priority: ${this.state.priority}`}
             onChange={this.handleChange}
             className="form-input"
             options={priority}
@@ -81,7 +81,7 @@ class EditTaskForm extends Component {
         <label>
           <Select
             name="status"
-            placeholder={this.state.status}
+            placeholder={`Status: ${this.state.status}`}
             onChange={this.handleChange}
             className="form-input"
             options={status}

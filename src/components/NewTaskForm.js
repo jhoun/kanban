@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCard } from '../actions/Cards';
 import './NewTaskForm.scss';
+import Select from 'react-select';
+
+const priority = [
+  { name: 'priority', label: 'high', value: 'high' },
+  { name: 'priority', label: 'medium', value: 'medium' },
+  { name: 'priority', label: 'low', value: 'low' }
+];
+
+const status = [
+  { name: 'status', label: 'queue', value: 'queue' },
+  { name: 'status', label: 'progress', value: 'progress' },
+  { name: 'status', label: 'done', value: 'done' }
+];
 
 class NewTaskForm extends Component {
   constructor(props) {
@@ -19,8 +32,8 @@ class NewTaskForm extends Component {
 
   handleChange(event) {
     const target = event.target;
-    const value = target.value;
-    const name = target.name;
+    const value = target ? target.value : event.value;
+    const name = target ? target.name : event.name;
 
     this.setState({
       [name]: value
@@ -46,7 +59,7 @@ class NewTaskForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="form">
-        <div className="form-title">CREATE NEW TASK</div>
+        <div className="form-title">Create New Task</div>
         <label className="label">
           <input
             type="text"
@@ -59,27 +72,21 @@ class NewTaskForm extends Component {
           />
         </label>
         <label className="label">
-          <input
-            type="text"
+          <Select
             name="priority"
-            className="form-input"
             placeholder="Priority"
-            onFocus={(e) => e.target.placeholder = ""}
-            onBlur={(e) => e.target.placeholder = `Priority`}
-            value={this.state.priority}
             onChange={this.handleChange}
+            className="form-input"
+            options={priority}
           />
         </label>
         <label className="label">
-          <input
-            type="text"
+          <Select
             name="status"
-            className="form-input"
             placeholder="Status"
-            onFocus={(e) => e.target.placeholder = ""}
-            onBlur={(e) => e.target.placeholder = `Status`}
-            value={this.state.status}
             onChange={this.handleChange}
+            className="form-input"
+            options={status}
           />
         </label>
         <label className="label">

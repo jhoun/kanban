@@ -14,14 +14,18 @@
     .form-input {
       height: 20%;
       width: 80%;
-      margin: .2rem 0;
+      margin: .2rem auto;
     }
     .form-input[type="text"] {
       font-size: 2rem;
-      padding-left: 1rem;
+      padding: 7px 0;
+      border-radius: 5px;
+      border: 1px solid white;
       font-family: 'Raleway', sans-serif;
       background-color: #4C525A;
       color: white;
+      padding-left: 1%;
+      width: 79%;
     }
 
     .form-input[type=text]:focus {
@@ -37,14 +41,36 @@
       opacity: .5;
     }
 
-    /* The container must be positioned relative: */
-    .custom-select {
-      position: relative;
-      font-family: Arial;
+    // Dropdown Container
+    .css-vj8t7z {
+      background-color: #4C525A;
+      font-size: 2rem;
     }
 
-    .custom-select select {
-      display: none; /*hide original SELECT element: */
+    // Dropdown Font
+    .css-xp4uvy {
+      font-family: 'Raleway', sans-serif;
+      color: white;
+      padding: 2px 0;
+    }
+
+    // Dropdown Placeholder
+    .css-1492t68 {
+      font-family: 'Raleway', sans-serif;
+      color: white;
+      opacity: .5;
+    }
+
+    // Dropdoown After Click
+    .css-2o5izw {
+      background-color:#4C525A;
+      color: white;
+      font-size: 2rem;
+      box-shadow: 0 0 0 1px #4C525A;
+    }
+
+    .css-2o5izw:hover {
+      border-color: white !important;
     }
 
     .submit {
