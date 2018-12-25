@@ -39,22 +39,23 @@ class Cards extends Component {
   renderCard(){
       return (
         <div className={`card ${this.props.status}`}>
-          <div className="card__task">{this.props.task}</div>
-          <div className="card__priority">{this.props.priority}</div>
-          <div className="card__status">{this.props.status}</div>
-          <div className="card__createdBy">{this.props.createdBy}</div>
-          <div className="card__assignedTo">{this.props.assignedTo}</div>
-          <button onClick={this.handleOpenModal}>Edit</button>
-          <ReactModal
-            isOpen={this.state.showModal}
-            contentLabel="Modal" className="modal"
-            overlayClassName="overlay"
-            onRequestClose={this.handleCloseModal}
-            shouldCloseOnOverlayClick={true}
-          >
-            <EditTaskForm selectedCardData={this.props} handleCloseModal={this.handleCloseModal}  />
-          </ReactModal>
-          <button onClick={this.handleDelete}>Delete</button>
+          <div className="card_info card__task">{this.props.task}</div>
+          <div className="card_info card__priority">Priority: {this.props.priority}</div>
+          <div className="card_info card__createdBy">Assigned by: {this.props.createdBy}</div>
+          <div className="card_info card__assignedTo">Assigned to: {this.props.assignedTo}</div>
+          <div className="modify-btn-container">
+            <div className={`modify-btn-${this.props.status}`} onClick={this.handleOpenModal}>Edit</div>
+            <ReactModal
+              isOpen={this.state.showModal}
+              contentLabel="Modal" className="modal"
+              overlayClassName="overlay"
+              onRequestClose={this.handleCloseModal}
+              shouldCloseOnOverlayClick={true}
+            >
+              <EditTaskForm selectedCardData={this.props} handleCloseModal={this.handleCloseModal}  />
+            </ReactModal>
+            <div className={`modify-btn-${this.props.status}`} onClick={this.handleDelete}>Delete</div>
+          </div>
         </div>
       )
 

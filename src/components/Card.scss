@@ -7,21 +7,64 @@
 
     &__task{
       font-size: 1.5rem;
+      padding-bottom: 7px;
+    }
+
+    .card_info {
+      margin: 2px 0;
+    }
+
+    .modify-btn-container {
+      padding-top: 5px;
+      display: flex;
+
+      .modify-btn-queue {
+        color: darken(#FDF1DE, 30%);
+        font-weight: 700;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .modify-btn-progress {
+        color: darken(#d3f7ad, 50%);
+        font-weight: 700;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .modify-btn-done {
+        color: darken(#F7F8FC, 30%);
+        font-weight: 700;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .modify-btn-queue:hover {
+        color: darken(#FDF1DE, 15%);
+      }
+
+      .modify-btn-progress:hover {
+        color: darken(#d3f7ad, 20%);
+      }
+
+      .modify-btn-done:hover {
+       color: darken(#F7F8FC, 20%);
+      }
     }
   }
 
   .queue {
     background-color: #FDF1DE;
-    border: 3px solid darken( #FDF1DE, 20%);
+    border: 3px solid darken(#FDF1DE, 30%);
   }
 
   .progress {
-    background-color: #E5FDCA;
-    border: 3px solid darken( #E5FDCA, 20%);
+    background-color: #d3f7ad;
+    border: 3px solid darken(#d3f7ad, 30%);
   }
 
   .done {
     background-color: #F7F8FC;
-    border: 3px solid darken( #F7F8FC, 20%);
+    border: 3px solid darken(#F7F8FC, 30%);
   }
 }
