@@ -31,16 +31,29 @@ router.route('/new')
 
 router.route('/edit/:card_id')
   .put((req, res) => {
-    const { title, priority_id, status_id, created_by_id, assigned_to_id } = req.body
+    const payload = { ...req.body };
     Cards
       .where(req.params)
       .fetch()
       .then(data => {
-        return data.save({ title, priority_id, status_id, created_by_id, assigned_to_id });
+        return data.save(payload);
       })
       .then(data => {
         console.log('data', data);
         res.json(data);
+      })
+      .catch(err => {
+        console.log('err', err);
+      })
+  })
+
+router.route('/delete/:card_id')
+  .delete((req, res) => {
+    Cards
+      .where(req.params)
+      .destroy()
+      .then(data => {
+        res.send('Card successfully removed');
       })
       .catch(err => {
         console.log('err', err);
