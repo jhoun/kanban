@@ -4,9 +4,9 @@ import { editCard } from '../actions/Cards'
 import Select from 'react-select';
 
 const priority = [
-  { name: 'priority', label: 'high' , value: 'high'},
+  { name: 'priority', label: 'low', value: 'low' },
   { name: 'priority', label: 'medium', value: 'medium' },
-  { name: 'priority', label: 'low', value: 'low' }
+  { name: 'priority', label: 'high', value: 'high' }
 ];
 
 const status = [
