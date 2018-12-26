@@ -5,6 +5,7 @@ require('./Users');
 
 const Cards = bookshelf.Model.extend({
   tableName: 'cards',
+  idAttribute: 'card_id',
   hasTimestamps: true,
   priorities: function() {
     return this.hasOne('Priorities', 'priority_id', 'priority_id')

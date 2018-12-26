@@ -15,4 +15,18 @@ router.route('/')
       })
   })
 
+router.route('/new')
+  .post((req,res)=> {
+    const payload = {...req.body};
+    Cards
+      .forge(payload)
+      .save()
+      .then(data => {
+        res.json(data);
+      })
+    .catch(err => {
+      console.log('err', err);
+    })
+  })
+
 module.exports = router;
