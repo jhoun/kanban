@@ -22,11 +22,29 @@ router.route('/new')
       .forge(payload)
       .save()
       .then(data => {
-        res.json(data);
+        console.log('data', data);
       })
     .catch(err => {
       console.log('err', err);
     })
+  })
+
+router.route('/edit/:card_id')
+  .put((req, res) => {
+    const { title, priority_id, status_id, created_by_id, assigned_to_id } = req.body
+    Cards
+      .where(req.params)
+      .fetch()
+      .then(data => {
+        return data.save({ title, priority_id, status_id, created_by_id, assigned_to_id });
+      })
+      .then(data => {
+        console.log('data', data);
+        res.json(data);
+      })
+      .catch(err => {
+        console.log('err', err);
+      })
   })
 
 module.exports = router;
