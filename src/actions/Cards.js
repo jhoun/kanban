@@ -1,11 +1,27 @@
-import card from './dummyData.json'
+
+import Axios from 'axios';
 
 export const loadCards = () => {
   return dispatch => {
-     dispatch({
-      type: 'LOAD_CARDS',
-      card
-    })
+    Axios
+      .get('http://localhost:3001/api/')
+      .then(data => {
+        let card =  data.data.map(data => {
+          console.log('data', data);
+          return {
+            title: data.title,
+            status: data.statuses.name,
+            priority: data.priorities.name,
+            createdBy: data.createdBy.first_name,
+            assignedTo: data.assignedTo.first_name
+          }
+        });
+
+        dispatch({
+          type: 'LOAD_CARDS',
+          card
+        })
+      })
   }
 }
 

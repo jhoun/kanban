@@ -7,8 +7,8 @@ router.route('/')
     Cards
       .fetchAll({ withRelated: ['priorities', 'statuses', 'createdBy', 'assignedTo']})
       .then(data => {
-        console.log('data', data.toJSON());
-        res.json(data)
+
+        res.send(data)
       })
       .catch(err => {
         console.log('err', err);

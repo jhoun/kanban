@@ -3,6 +3,7 @@ export default (state = [], action) => {
   switch (action.type) {
 
     case 'LOAD_CARDS':
+    console.log('action', action);
       return action.card
 
     case 'ADD_CARD':
