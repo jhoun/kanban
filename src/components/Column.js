@@ -4,11 +4,10 @@ import './Column.scss';
 
 const Column = props => {
     const renderCard = props.cardData.map((card, i) => {
-      console.log('card', card);
           return <Card
             key = {i}
             id={card.id}
-            task={card.title}
+            title={card.title}
             priority={card.priority}
             status={card.status}
             createdBy={card.createdBy}

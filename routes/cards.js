@@ -18,6 +18,7 @@ router.route('/')
 router.route('/new')
   .post((req,res)=> {
     const payload = {...req.body};
+    console.log('payload', payload);
     Cards
       .forge(payload)
       .save()

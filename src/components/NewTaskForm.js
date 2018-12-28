@@ -4,30 +4,33 @@ import { addCard } from '../actions/Cards';
 import './NewTaskForm.scss';
 import Select from 'react-select';
 
-const priority = [
-  { name: 'priority', label: 'high', value: 'high' },
-  { name: 'priority', label: 'medium', value: 'medium' },
-  { name: 'priority', label: 'low', value: 'low' }
-];
-
-const status = [
-  { name: 'status', label: 'queue', value: 'queue' },
-  { name: 'status', label: 'progress', value: 'progress' },
-  { name: 'status', label: 'done', value: 'done' }
-];
-
 class NewTaskForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      task: '',
+      title: '',
       priority: '',
       status: '',
       createdBy: '',
-      assignedTo: ''
+      assignedTo: '',
+      priorityDropdown: [
+        { name: 'priority', label: 'low', value: 1 },
+        { name: 'priority', label: 'medium', value: 2 },
+        { name: 'priority', label: 'high', value: 3 },
+      ],
+      statusDropdown: [
+        { name: 'status', label: 'queue', value: 1 },
+        { name: 'status', label: 'progress', value: 2 },
+        { name: 'status', label: 'done', value: 3 }
+      ]
     };
+    this.usersDropdown = this.usersDropdown.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  usersDropdown() {
+    console.log('this.props', this.props);
   }
 
   handleChange(event) {
@@ -42,28 +45,30 @@ class NewTaskForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { task, priority, status, createdBy, assignedTo } = this.state;
+    const { title, priority, status, createdBy, assignedTo } = this.state;
 
     const newCardData = {
-      task,
+      title,
       priority,
       status,
       createdBy,
       assignedTo
     }
+    console.log('newCardData', newCardData);
 
     this.props.addCard(newCardData);
     this.props.handleCloseModal();
   }
 
   render() {
+    this.usersDropdown();
     return (
       <form onSubmit={this.handleSubmit} className="form">
         <div className="form-title">Create New Task</div>
         <label className="label">
           <input
             type="text"
-            name="task"
+            name="title"
             className="form-input"
             placeholder="Task Name"
             onFocus={(e) => e.target.placeholder = ""}
@@ -77,7 +82,7 @@ class NewTaskForm extends Component {
             placeholder="Priority"
             onChange={this.handleChange}
             className="form-input"
-            options={priority}
+            options={this.state.priorityDropdown}
           />
         </label>
         <label className="label">
@@ -86,7 +91,7 @@ class NewTaskForm extends Component {
             placeholder="Status"
             onChange={this.handleChange}
             className="form-input"
-            options={status}
+            options={this.state.statusDropdown}
           />
         </label>
         <label className="label">
