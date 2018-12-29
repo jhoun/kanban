@@ -7,7 +7,6 @@ router.route('/')
     Cards
       .fetchAll({ withRelated: ['priorities', 'statuses', 'createdBy', 'assignedTo']})
       .then(data => {
-
         res.send(data)
       })
       .catch(err => {
@@ -23,7 +22,7 @@ router.route('/new')
       .forge(payload)
       .save()
       .then(data => {
-        console.log('data', data);
+        res.send(data);
       })
     .catch(err => {
       console.log('err', err);

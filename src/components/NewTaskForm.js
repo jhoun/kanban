@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCard } from '../actions/Cards';
+import { loadUsers } from '../actions/Users';
 import './NewTaskForm.scss';
 import Select from 'react-select';
 
@@ -12,25 +13,51 @@ class NewTaskForm extends Component {
       priority: '',
       status: '',
       createdBy: '',
-      assignedTo: '',
-      priorityDropdown: [
-        { name: 'priority', label: 'low', value: 1 },
-        { name: 'priority', label: 'medium', value: 2 },
-        { name: 'priority', label: 'high', value: 3 },
-      ],
-      statusDropdown: [
-        { name: 'status', label: 'queue', value: 1 },
-        { name: 'status', label: 'progress', value: 2 },
-        { name: 'status', label: 'done', value: 3 }
-      ]
+      assignedTo: ''
     };
-    this.usersDropdown = this.usersDropdown.bind(this);
+    this.dropdownValues = this.dropdownValues.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  usersDropdown() {
-    console.log('this.props', this.props);
+  componentDidMount() {
+    this.props.loadUsers();
+  }
+
+  dropdownValues(category) {
+    switch(category){
+
+      case 'priority':
+        return [
+          { name: 'priority', label: 'low', value: 1 },
+          { name: 'priority', label: 'medium', value: 2 },
+          { name: 'priority', label: 'high', value: 3 },
+        ];
+
+      case 'status':
+        return [
+          { name: 'status', label: 'queue', value: 1 },
+          { name: 'status', label: 'progress', value: 2 },
+          { name: 'status', label: 'done', value: 3 }
+        ];
+
+      case 'createdBy':
+        return this.props.userData.map(user => {
+          return {
+            name: 'createdBy', label: user.first_name, value: user.id
+          }
+        })
+
+      case 'assignedTo':
+        return this.props.userData.map(user => {
+          return {
+            name: 'assignedTo', label: user.first_name, value: user.id
+          }
+        })
+
+      default:
+        return null;
+    }
   }
 
   handleChange(event) {
@@ -49,19 +76,17 @@ class NewTaskForm extends Component {
 
     const newCardData = {
       title,
-      priority,
-      status,
-      createdBy,
-      assignedTo
+      priority_id: priority,
+      status_id: status,
+      created_by_id: createdBy,
+      assigned_to_id: assignedTo
     }
-    console.log('newCardData', newCardData);
-
     this.props.addCard(newCardData);
     this.props.handleCloseModal();
   }
 
   render() {
-    this.usersDropdown();
+
     return (
       <form onSubmit={this.handleSubmit} className="form">
         <div className="form-title">Create New Task</div>
@@ -82,7 +107,7 @@ class NewTaskForm extends Component {
             placeholder="Priority"
             onChange={this.handleChange}
             className="form-input"
-            options={this.state.priorityDropdown}
+            options={this.dropdownValues("priority")}
           />
         </label>
         <label className="label">
@@ -91,31 +116,25 @@ class NewTaskForm extends Component {
             placeholder="Status"
             onChange={this.handleChange}
             className="form-input"
-            options={this.state.statusDropdown}
+            options={this.dropdownValues("status")}
           />
         </label>
         <label className="label">
-          <input
-            type="text"
+          <Select
             name="createdBy"
-            className="form-input"
             placeholder="Created By"
-            onFocus={(e) => e.target.placeholder = ""}
-            onBlur={(e) => e.target.placeholder = `Created By`}
-            value={this.state.createdBy}
             onChange={this.handleChange}
+            className="form-input"
+            options={this.dropdownValues("createdBy")}
           />
         </label>
         <label className="label">
-          <input
-            type="text"
+          <Select
             name="assignedTo"
-            className="form-input"
             placeholder="Assigned To"
-            onFocus={(e) => e.target.placeholder = ""}
-            onBlur={(e) => e.target.placeholder = `Assigned To`}
-            value={this.state.assignedTo}
             onChange={this.handleChange}
+            className="form-input"
+            options={this.dropdownValues('assignedTo')}
           />
         </label>
         <input
@@ -130,13 +149,15 @@ class NewTaskForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    cardData: state.cardData
+    cardData: state.cardData,
+    userData: state.userData
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    addCard: (data) => dispatch(addCard(data))
+    addCard: (data) => dispatch(addCard(data)),
+    loadUsers: () => dispatch(loadUsers())
   }
 }
 

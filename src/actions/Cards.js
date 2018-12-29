@@ -23,14 +23,13 @@ export const loadCards = () => {
 export const addCard = (card) => {
   return dispatch => {
     axios.post('http://localhost:3001/api/new',card)
-    .then( response => {
-      console.log('response', response);
+    .then (response => {
+      dispatch({
+        type: 'ADD_CARD',
+        card: response.data
+      })
     })
 
-    dispatch({
-      type: 'ADD_CARD',
-      card
-    })
   }
 }
 
