@@ -24,13 +24,13 @@ export const addCard = (card) => {
   return dispatch => {
     return axios.post('http://localhost:3001/api/new', card)
       .then(response => {
-        console.log('response.data.assignedTo.first_name', response.data.assignedTo.first_name);
+
         dispatch({
           type: 'ADD_CARD',
-          payload: {
+          card: {
             title: response.data.title,
             status: response.data.statuses.name,
-            priorities: response.data.priorities.name,
+            priority: response.data.priorities.name,
             createdBy: response.data.createdBy.first_name,
             assignedTo: response.data.assignedTo.first_name
           }

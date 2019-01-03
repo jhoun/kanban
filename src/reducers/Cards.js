@@ -6,8 +6,7 @@ export default (state = [], action) => {
       return action.card
 
     case 'ADD_CARD':
-      console.log('action.card', action);
-      return [...state, action.payload];
+      return [...state, action.card];
 
     case 'EDIT_CARD':
       return state.map(card => {
