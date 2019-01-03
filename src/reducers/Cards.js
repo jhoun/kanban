@@ -6,11 +6,12 @@ export default (state = [], action) => {
       return action.card
 
     case 'ADD_CARD':
-      return [...state, action.card];
+      console.log('action.card', action);
+      return [...state, action.payload];
 
     case 'EDIT_CARD':
       return state.map(card => {
-        return Object.assign({}, ...state, (card.id === action.card.id) ? action.card : card )
+        return Object.assign({}, ...state, (card.id === action.card.id) ? action.card : card)
       });
 
     case 'DELETE_CARD':

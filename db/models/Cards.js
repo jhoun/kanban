@@ -7,16 +7,16 @@ const Cards = bookshelf.Model.extend({
   tableName: 'cards',
   idAttribute: 'card_id',
   hasTimestamps: true,
-  priorities: function() {
+  priorities: function () {
     return this.hasOne('Priorities', 'priority_id', 'priority_id')
   },
   statuses: function () {
     return this.hasOne('Statuses', 'status_id', 'status_id')
   },
-  createdBy: function(){
+  createdBy: function () {
     return this.hasOne('Users', 'user_id', 'created_by_id')
   },
-  assignedTo: function(){
+  assignedTo: function () {
     return this.hasOne('Users', 'user_id', 'assigned_to_id')
   }
 })

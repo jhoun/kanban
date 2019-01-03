@@ -3,11 +3,10 @@ const router = express.Router();
 const Cards = require('../db/models/Cards.js');
 
 router.route('/')
-  .get((req,res) => {
+  .get((req, res) => {
     Cards
-      .fetchAll({ withRelated: ['priorities', 'statuses', 'createdBy', 'assignedTo']})
+      .fetchAll({ withRelated: ['priorities', 'statuses', 'createdBy', 'assignedTo'] })
       .then(data => {
-        console.log('data', data.toJSON());
         res.json(data)
       })
       .catch(err => {
@@ -16,17 +15,21 @@ router.route('/')
   })
 
 router.route('/new')
-  .post((req,res)=> {
-    const payload = {...req.body};
+  .post((req, res) => {
+    const payload = { ...req.body };
+    console.log('payload', payload);
     Cards
       .forge(payload)
       .save()
-      .then(data => {
-        console.log('data', data);
+      .tap(function (model) {
+        return model.refresh({ withRelated: ['priorities', 'statuses', 'createdBy', 'assignedTo'] })
       })
-    .catch(err => {
-      console.log('err', err);
-    })
+      .then(data => {
+        res.send(data)
+      })
+      .catch(err => {
+        console.log('err', err);
+      })
   })
 
 router.route('/edit/:card_id')

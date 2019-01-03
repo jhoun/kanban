@@ -5,13 +5,13 @@ import './NewTaskForm.scss';
 import Select from 'react-select';
 
 const priority = [
-  { name: 'priority', label: 'high', value: 'high' },
-  { name: 'priority', label: 'medium', value: 'medium' },
-  { name: 'priority', label: 'low', value: 'low' }
+  { name: 'priority', label: 'high', value: 1 },
+  { name: 'priority', label: 'medium', value: 2 },
+  { name: 'priority', label: 'low', value: 3 }
 ];
 
 const status = [
-  { name: 'status', label: 'queue', value: 'queue' },
+  { name: 'status', label: 'queue', value: 1 },
   { name: 'status', label: 'progress', value: 'progress' },
   { name: 'status', label: 'done', value: 'done' }
 ];
@@ -46,10 +46,10 @@ class NewTaskForm extends Component {
 
     const newCardData = {
       title,
-      priority,
-      status,
-      createdBy,
-      assignedTo
+      priority_id: priority,
+      status_id: status,
+      created_by_id: createdBy,
+      assigned_to_id: assignedTo
     }
 
     this.props.addCard(newCardData);
