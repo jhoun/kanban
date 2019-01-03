@@ -20,7 +20,7 @@ class NewTaskForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      task: '',
+      title: '',
       priority: '',
       status: '',
       createdBy: '',
@@ -42,10 +42,10 @@ class NewTaskForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { task, priority, status, createdBy, assignedTo } = this.state;
+    const { title, priority, status, createdBy, assignedTo } = this.state;
 
     const newCardData = {
-      task,
+      title,
       priority,
       status,
       createdBy,
@@ -63,7 +63,7 @@ class NewTaskForm extends Component {
         <label className="label">
           <input
             type="text"
-            name="task"
+            name="title"
             className="form-input"
             placeholder="Task Name"
             onFocus={(e) => e.target.placeholder = ""}
