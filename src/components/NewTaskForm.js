@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCard } from '../actions/Cards';
-import { loadUsers } from '../actions/Users';
 import './NewTaskForm.scss';
 import Select from 'react-select';
 
@@ -18,10 +17,6 @@ class NewTaskForm extends Component {
     this.dropdownValues = this.dropdownValues.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.loadUsers();
   }
 
   dropdownValues(category) {
@@ -156,8 +151,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addCard: (data) => dispatch(addCard(data)),
-    loadUsers: () => dispatch(loadUsers())
+    addCard: (data) => dispatch(addCard(data))
   }
 }
 

@@ -41,6 +41,9 @@ router.route('/edit/:card_id')
       .then(data => {
         return data.save(payload);
       })
+      .tap(function (model) {
+        return model.refresh({ withRelated: ['priorities', 'statuses', 'createdBy', 'assignedTo'] })
+      })
       .then(data => {
         console.log('data', data);
         res.json(data);

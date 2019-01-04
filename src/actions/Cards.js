@@ -21,29 +21,35 @@ export const loadCards = () => {
 }
 
 export const addCard = (card) => {
-  return dispatch => {
-    return axios.post('http://localhost:3001/api/new', card)
-      .then(response => {
-
-        dispatch({
-          type: 'ADD_CARD',
-          card: {
-            title: response.data.title,
-            status: response.data.statuses.name,
-            priority: response.data.priorities.name,
-            createdBy: response.data.createdBy.first_name,
-            assignedTo: response.data.assignedTo.first_name
-          }
-        })
-      })
+  return async dispatch => {
+    const response = await axios.post('http://localhost:3001/api/new', card)
+    dispatch({
+      type: 'ADD_CARD',
+      card: {
+        title: response.data.title,
+        status: response.data.statuses.name,
+        priority: response.data.priorities.name,
+        createdBy: response.data.createdBy.first_name,
+        assignedTo: response.data.assignedTo.first_name
+      }
+    })
   }
 }
 
 export const editCard = (card) => {
-  return dispatch => {
+  return async dispatch => {
+    const response = await axios.put(`http://localhost:3001/api/edit/${card.card_id}`, card)
+    console.log('response', response);
     dispatch({
       type: 'EDIT_CARD',
-      card
+      card: {
+        card_id: response.data.card_id,
+        title: response.data.title,
+        status: response.data.statuses.name,
+        priority: response.data.priorities.name,
+        createdBy: response.data.createdBy.first_name,
+        assignedTo: response.data.assignedTo.first_name
+      }
     })
   }
 }

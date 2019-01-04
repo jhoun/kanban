@@ -6,7 +6,7 @@ import EditTaskForm from './EditTaskForm';
 import './Card.scss';
 
 class Cards extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -36,32 +36,32 @@ class Cards extends Component {
     this.props.deleteCard(this.props.id)
   }
 
-  renderCard(){
-      return (
-        <div className={`card ${this.props.status}`}>
-          <div className="card_info card__task">{this.props.task}</div>
-          <div className="card_info card__priority">Priority: {this.props.priority}</div>
-          <div className="card_info card__createdBy">Assigned by: {this.props.createdBy}</div>
-          <div className="card_info card__assignedTo">Assigned to: {this.props.assignedTo}</div>
-          <div className="modify-btn-container">
-            <div className={`modify-btn-${this.props.status}`} onClick={this.handleOpenModal}>Edit</div>
-            <ReactModal
-              isOpen={this.state.showModal}
-              contentLabel="Modal" className="modal"
-              overlayClassName="overlay"
-              onRequestClose={this.handleCloseModal}
-              shouldCloseOnOverlayClick={true}
-            >
-              <EditTaskForm selectedCardData={this.props} handleCloseModal={this.handleCloseModal}  />
-            </ReactModal>
-            <div className={`modify-btn-${this.props.status}`} onClick={this.handleDelete}>Delete</div>
-          </div>
+  renderCard() {
+    return (
+      <div className={`card ${this.props.status}`}>
+        <div className="card_info card__task">{this.props.title}</div>
+        <div className="card_info card__priority">Priority: {this.props.priority}</div>
+        <div className="card_info card__createdBy">Assigned by: {this.props.createdBy}</div>
+        <div className="card_info card__assignedTo">Assigned to: {this.props.assignedTo}</div>
+        <div className="modify-btn-container">
+          <div className={`modify-btn-${this.props.status}`} onClick={this.handleOpenModal}>Edit</div>
+          <ReactModal
+            isOpen={this.state.showModal}
+            contentLabel="Modal" className="modal"
+            overlayClassName="overlay"
+            onRequestClose={this.handleCloseModal}
+            shouldCloseOnOverlayClick={true}
+          >
+            <EditTaskForm selectedCardData={this.props} handleCloseModal={this.handleCloseModal} />
+          </ReactModal>
+          <div className={`modify-btn-${this.props.status}`} onClick={this.handleDelete}>Delete</div>
         </div>
-      )
+      </div>
+    )
 
   }
 
-  render(){
+  render() {
     return (
       <div className="card-container">
         {this.renderCard()}

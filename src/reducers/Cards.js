@@ -10,7 +10,7 @@ export default (state = [], action) => {
 
     case 'EDIT_CARD':
       return state.map(card => {
-        return Object.assign({}, ...state, (card.id === action.card.id) ? action.card : card)
+        return Object.assign({}, ...state, (card.id === action.card.card_id) ? action.card : card)
       });
 
     case 'DELETE_CARD':
