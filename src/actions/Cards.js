@@ -8,9 +8,13 @@ export const loadCards = () => {
         card_id: data.card_id,
         title: data.title,
         status: data.statuses.name,
+        status_id: data.statuses.status_id,
         priority: data.priorities.name,
+        priority_id: data.priorities.priority_id,
         createdBy: data.createdBy.first_name,
-        assignedTo: data.assignedTo.first_name
+        createdBy_id: data.createdBy.user_id,
+        assignedTo: data.assignedTo.first_name,
+        assignedTo_id: data.assignedTo.user_id
       }
     });
     dispatch({
@@ -42,12 +46,16 @@ export const editCard = (card) => {
     dispatch({
       type: 'EDIT_CARD',
       card: {
-        card_id: response.data.card_id,
+        card_id: card.card_id,
         title: response.data.title,
         status: response.data.statuses.name,
+        status_id: response.data.statuses.status_id,
         priority: response.data.priorities.name,
+        priority_id: response.data.priorities.priority_id,
         createdBy: response.data.createdBy.first_name,
-        assignedTo: response.data.assignedTo.first_name
+        createdBy_id: response.data.createdBy.user_id,
+        assignedTo: response.data.assignedTo.first_name,
+        assignedTo_id: response.data.assignedTo.user_id
       }
     })
   }
@@ -55,8 +63,7 @@ export const editCard = (card) => {
 
 export const deleteCard = (card) => {
   return async dispatch => {
-    const response = await axios.delete(`http://localhost:3001/api/delete/${card}`, { id: card })
-    console.log('response', response);
+    await axios.delete(`http://localhost:3001/api/delete/${card}`, { id: card })
     dispatch({
       type: 'DELETE_CARD',
       card

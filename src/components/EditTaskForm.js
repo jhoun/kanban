@@ -6,16 +6,19 @@ import Select from 'react-select';
 class EditTaskForm extends Component {
   constructor(props) {
     super(props)
-    console.log('props', props);
-    const { card_id, title, priority, status, createdBy, assignedTo } = props.selectedCardData;
+    const { card_id, title, priority, priority_id, status, status_id, createdBy, createdBy_id, assignedTo, assignedTo_id } = props.selectedCardData;
 
     this.state = {
       card_id,
       title,
       priority,
+      priority_id,
       status,
+      status_id,
       createdBy,
+      createdBy_id,
       assignedTo,
+      assignedTo_id
     }
 
     this.dropdownValues = this.dropdownValues.bind(this);
@@ -70,21 +73,25 @@ class EditTaskForm extends Component {
   }
 
   handleSubmit(event) {
-    console.log('this.state', this.state);
+    console.log('this.props', this.props);
+    console.log('state_BEFORE_EDIT', this.state);
     event.preventDefault();
     const editCard = {
       card_id: this.state.card_id,
       title: this.state.title,
-      priority_id: this.state.priority,
-      status_id: this.state.status,
-      created_by_id: this.state.createdBy,
-      assigned_to_id: this.state.assignedTo
+      priority_id: typeof this.state.priority === 'string' ? this.state.priority_id : this.state.priority,
+      status_id: typeof this.state.status === 'string' ? this.state.status_id : this.state.status,
+      created_by_id: typeof this.state.createdBy === 'string' ? this.state.createdBy_id : this.state.createdBy,
+      assigned_to_id: typeof this.state.assignedTo === 'string' ? this.state.assignedTo_id : this.state.assignedTo
     }
+    console.log('editCard', editCard);
+    console.log('state_AFTER_EDIT', this.state);
     this.props.editCard(editCard);
     this.props.handleCloseModal();
   }
 
   render() {
+
     return (
       <form onSubmit={this.handleSubmit} className="form">
         <div className="form-title">EDIT TASK</div>
@@ -101,7 +108,7 @@ class EditTaskForm extends Component {
         </label>
         <label>
           <Select
-            name="priority"
+            name="stuff"
             placeholder={`Priority: ${this.state.priority}`}
             onChange={this.handleChange}
             className="form-input"
