@@ -6,7 +6,7 @@ const Column = props => {
   const renderCard = props.cardData.map((card, i) => {
     return <Card
       key={i}
-      card_id={card.id}
+      card_id={card.card_id}
       title={card.title}
       priority={card.priority}
       status={card.status}

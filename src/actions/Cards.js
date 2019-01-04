@@ -5,7 +5,7 @@ export const loadCards = () => {
     const response = await axios.get('http://localhost:3001/api/');
     const card = await response.data.map(data => {
       return {
-        id: data.card_id,
+        card_id: data.card_id,
         title: data.title,
         status: data.statuses.name,
         priority: data.priorities.name,
