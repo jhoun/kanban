@@ -32,8 +32,9 @@ class Cards extends Component {
   }
 
   handleDelete(event) {
+    console.log('this.props', this.props);
     event.preventDefault();
-    this.props.deleteCard(this.props.id)
+    this.props.deleteCard(this.props.card_id)
   }
 
   renderCard() {

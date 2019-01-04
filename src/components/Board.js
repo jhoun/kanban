@@ -13,7 +13,6 @@ class Board extends Component {
   }
 
   filterStatus(status) {
-    console.log('this.props', this.props);
     return this.props.cardData.filter(card => {
       return card.status === status;
     })

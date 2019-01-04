@@ -39,7 +39,6 @@ export const addCard = (card) => {
 export const editCard = (card) => {
   return async dispatch => {
     const response = await axios.put(`http://localhost:3001/api/edit/${card.card_id}`, card)
-    console.log('response', response);
     dispatch({
       type: 'EDIT_CARD',
       card: {
@@ -54,11 +53,13 @@ export const editCard = (card) => {
   }
 }
 
-export const deleteCard = (id) => {
-  return dispatch => {
+export const deleteCard = (card) => {
+  return async dispatch => {
+    const response = await axios.delete(`http://localhost:3001/api/delete/${card}`, { id: card })
+    console.log('response', response);
     dispatch({
       type: 'DELETE_CARD',
-      id
+      card
     })
   }
 }
