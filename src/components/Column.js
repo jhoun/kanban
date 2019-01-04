@@ -9,9 +9,13 @@ const Column = props => {
       card_id={card.card_id}
       title={card.title}
       priority={card.priority}
+      priority_id={card.priority_id}
       status={card.status}
+      status_id={card.status_id}
       createdBy={card.createdBy}
+      createdBy_id={card.createdBy_id}
       assignedTo={card.assignedTo}
+      assignedTo_id={card.assignedTo_id}
     />
   });
   return (

@@ -17,7 +17,6 @@ router.route('/')
 router.route('/new')
   .post((req, res) => {
     const payload = { ...req.body };
-    console.log('payload', payload);
     Cards
       .forge(payload)
       .save()
@@ -45,7 +44,6 @@ router.route('/edit/:card_id')
         return model.refresh({ withRelated: ['priorities', 'statuses', 'createdBy', 'assignedTo'] })
       })
       .then(data => {
-        console.log('data', data);
         res.json(data);
       })
       .catch(err => {
