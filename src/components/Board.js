@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadCards } from '../actions/Cards';
+import { loadUsers } from '../actions/Users';
 import Column from './Column';
 import './Board.scss';
 
@@ -8,11 +9,12 @@ class Board extends Component {
 
   componentDidMount() {
     this.props.loadCards();
+    this.props.loadUsers();
   }
 
   filterStatus(status) {
     return this.props.cardData.filter(card => {
-      return card.status === status ;
+      return card.status === status;
     })
   }
 
@@ -44,7 +46,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadCards: () => dispatch(loadCards())
+    loadCards: () => dispatch(loadCards()),
+    loadUsers: () => dispatch(loadUsers())
   }
 }
 

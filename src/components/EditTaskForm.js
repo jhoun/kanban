@@ -3,35 +3,60 @@ import { connect } from 'react-redux';
 import { editCard } from '../actions/Cards'
 import Select from 'react-select';
 
-const priority = [
-  { name: 'priority', label: 'low', value: 'low' },
-  { name: 'priority', label: 'medium', value: 'medium' },
-  { name: 'priority', label: 'high', value: 'high' }
-];
-
-const status = [
-  { name: 'status', label: 'queue', value: 'queue' },
-  { name: 'status', label: 'progress', value: 'progress' },
-  { name: 'status', label: 'done', value: 'done' }
-];
-
 class EditTaskForm extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-
-    const { id, task, priority, status, createdBy, assignedTo } = props.selectedCardData;
+    console.log('props', props);
+    const { card_id, title, priority, status, createdBy, assignedTo } = props.selectedCardData;
 
     this.state = {
-      id,
-      task,
+      card_id,
+      title,
       priority,
       status,
       createdBy,
       assignedTo,
     }
 
+    this.dropdownValues = this.dropdownValues.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  dropdownValues(category) {
+    switch (category) {
+
+      case 'priority':
+        return [
+          { name: 'priority', label: 'low', value: 1 },
+          { name: 'priority', label: 'medium', value: 2 },
+          { name: 'priority', label: 'high', value: 3 },
+        ];
+
+      case 'status':
+        return [
+          { name: 'status', label: 'queue', value: 1 },
+          { name: 'status', label: 'progress', value: 2 },
+          { name: 'status', label: 'done', value: 3 }
+        ];
+
+      case 'createdBy':
+        return this.props.userData.map(user => {
+          return {
+            name: 'createdBy', label: user.first_name, value: user.id
+          }
+        })
+
+      case 'assignedTo':
+        return this.props.userData.map(user => {
+          return {
+            name: 'assignedTo', label: user.first_name, value: user.id
+          }
+        })
+
+      default:
+        return null;
+    }
   }
 
   handleChange(event) {
@@ -44,28 +69,33 @@ class EditTaskForm extends Component {
     })
   }
 
-  handleSelectChange(selectedOption) {
-    this.setState({ selectedOption });
-  }
-
   handleSubmit(event) {
+    console.log('this.state', this.state);
     event.preventDefault();
-    this.props.editCard(this.state);
+    const editCard = {
+      card_id: this.state.card_id,
+      title: this.state.title,
+      priority_id: this.state.priority,
+      status_id: this.state.status,
+      created_by_id: this.state.createdBy,
+      assigned_to_id: this.state.assignedTo
+    }
+    this.props.editCard(editCard);
     this.props.handleCloseModal();
   }
 
-  render(){
+  render() {
     return (
       <form onSubmit={this.handleSubmit} className="form">
         <div className="form-title">EDIT TASK</div>
         <label>
           <input
             type="text"
-            name="task"
+            name="title"
             className="form-input"
-            placeholder={`Task: ${this.state.task}`}
+            placeholder={`Task: ${this.state.title}`}
             onFocus={(e) => e.target.placeholder = ""}
-            onBlur={(e) => e.target.placeholder = `Task: ${this.state.task}`}
+            onBlur={(e) => e.target.placeholder = `Task: ${this.state.title}`}
             onChange={this.handleChange}
           />
         </label>
@@ -75,7 +105,7 @@ class EditTaskForm extends Component {
             placeholder={`Priority: ${this.state.priority}`}
             onChange={this.handleChange}
             className="form-input"
-            options={priority}
+            options={this.dropdownValues("priority")}
           />
         </label>
         <label>
@@ -84,30 +114,26 @@ class EditTaskForm extends Component {
             placeholder={`Status: ${this.state.status}`}
             onChange={this.handleChange}
             className="form-input"
-            options={status}
+            options={this.dropdownValues("status")}
           />
         </label>
         <label>
-            <input
-              type="text"
-              name="createdBy"
-              className="form-input"
-              placeholder={`Created By: ${this.state.createdBy}`}
-              onFocus={(e) => e.target.placeholder = ""}
-              onBlur={(e) => e.target.placeholder = `Created By: ${this.state.createdBy}`}
-              onChange={this.handleChange}
-            />
+          <Select
+            name="createdBy"
+            placeholder={`Created By: ${this.state.createdBy}`}
+            onChange={this.handleChange}
+            className="form-input"
+            options={this.dropdownValues("createdBy")}
+          />
         </label>
         <label>
-            <input
-              type="text"
-              name="assignedTo"
-              className="form-input"
-              placeholder={`Assigned To: ${this.state.assignedTo}`}
-              onFocus={(e) => e.target.placeholder = ""}
-              onBlur={(e) => e.target.placeholder = `Assigned To: ${this.state.assignedTo}`}
-              onChange={this.handleChange}
-            />
+          <Select
+            name="assignedTo"
+            placeholder={`Created By: ${this.state.assignedTo}`}
+            onChange={this.handleChange}
+            className="form-input"
+            options={this.dropdownValues("assignedTo")}
+          />
         </label>
         <input
           type="submit"
@@ -121,7 +147,8 @@ class EditTaskForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    cardData: state.cardData
+    cardData: state.cardData,
+    userData: state.userData
   }
 }
 
