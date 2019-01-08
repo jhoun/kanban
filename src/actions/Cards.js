@@ -30,11 +30,16 @@ export const addCard = (card) => {
     dispatch({
       type: 'ADD_CARD',
       card: {
+        card_id: response.data.card_id,
         title: response.data.title,
         status: response.data.statuses.name,
+        status_id: response.data.statuses.status_id,
         priority: response.data.priorities.name,
+        priority_id: response.data.priorities.priority_id,
         createdBy: response.data.createdBy.first_name,
-        assignedTo: response.data.assignedTo.first_name
+        createdBy_id: response.data.createdBy.user_id,
+        assignedTo: response.data.assignedTo.first_name,
+        assignedTo_id: response.data.assignedTo.user_id
       }
     })
   }
