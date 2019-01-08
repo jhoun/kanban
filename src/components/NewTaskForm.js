@@ -81,7 +81,6 @@ class NewTaskForm extends Component {
   }
 
   render() {
-
     return (
       <form onSubmit={this.handleSubmit} className="form">
         <div className="form-title">Create New Task</div>

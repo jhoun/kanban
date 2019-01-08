@@ -74,6 +74,7 @@ class EditTaskForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log('this.state in HANDLE SUBMIT', this.state);
     const editCard = {
       card_id: this.state.card_id,
       title: this.state.title,
@@ -82,6 +83,7 @@ class EditTaskForm extends Component {
       created_by_id: typeof this.state.createdBy === 'string' ? this.state.createdBy_id : this.state.createdBy,
       assigned_to_id: typeof this.state.assignedTo === 'string' ? this.state.assignedTo_id : this.state.assignedTo
     }
+    console.log('editCard', editCard);
     this.props.editCard(editCard);
     this.props.handleCloseModal();
   }
