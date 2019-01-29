@@ -1,13 +1,14 @@
 const express = require('express');
-const PORT = process.env.PORT || 3001;
+const app = express();
+const PORT = process.env.EXPRESS_CONTAINER_PORT;
 const bodyParser = require('body-parser');
 const routes = require('./routes');
-const app = express();
 const cors = require('cors');
 
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('server/public'));
 app.use(bodyParser.json());
 
 app.use('/api', routes);
