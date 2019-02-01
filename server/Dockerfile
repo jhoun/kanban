@@ -9,7 +9,7 @@ ARG NODE_ENV=development
 WORKDIR ${app_directory}
 
 # ONLY copy over the package.json to install NPM packages
-COPY package.json .
+COPY package.json /src/app
 
 # Install node module dependencies
 RUN npm install
@@ -19,4 +19,4 @@ RUN npm rebuild node-sass
 COPY . .
 
 # Start the node application as you normally would
-CMD ["node", "./server/server.js"]
+CMD ["node", "server.js"]

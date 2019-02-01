@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.EXPRESS_CONTAINER_PORT;
+const PORT = process.env.EXPRESS_CONTAINER_PORT || 8080;
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 const cors = require('cors');
