@@ -1,4 +1,3 @@
-
 const knex = require('../knex/knex.js');
 const bookshelf = require('bookshelf')(knex);
 bookshelf.plugin('registry')

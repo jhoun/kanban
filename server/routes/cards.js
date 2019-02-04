@@ -10,7 +10,6 @@ router.route('/')
         res.json(data)
       })
       .catch(err => {
-        console.log('err', err);
       })
   })
 
