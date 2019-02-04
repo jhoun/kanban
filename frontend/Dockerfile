@@ -9,3 +9,4 @@ RUN npm rebuild node-sass
 COPY . /app/frontend
 
 CMD ["npm", "start"]
+

@@ -1,8 +1,10 @@
 import axios from 'axios';
+require('dotenv').config({ path: '../../.env' })
+let endpoint = process.env.REACT_APP_POSTGRES_HOSTNAME || 'http://localhost'
 
 export const loadCards = () => {
   return async dispatch => {
-    const response = await axios.get('http://localhost:8080/api/');
+    const response = await axios.get(`${endpoint}:8080/api/`);
     const card = await response.data.map(data => {
       return {
         card_id: data.card_id,
@@ -26,7 +28,7 @@ export const loadCards = () => {
 
 export const addCard = (card) => {
   return async dispatch => {
-    const response = await axios.post('http://localhost:8080/api/new', card)
+    const response = await axios.post(`${endpoint}:8080/api/new`, card)
     dispatch({
       type: 'ADD_CARD',
       card: {
@@ -47,7 +49,7 @@ export const addCard = (card) => {
 
 export const editCard = (card) => {
   return async dispatch => {
-    const response = await axios.put(`http://localhost:8080/api/edit/${card.card_id}`, card)
+    const response = await axios.put(`${endpoint}:8080/api/edit/${card.card_id}`, card)
     dispatch({
       type: 'EDIT_CARD',
       card: {
@@ -68,7 +70,7 @@ export const editCard = (card) => {
 
 export const deleteCard = (card) => {
   return async dispatch => {
-    await axios.delete(`http://localhost:8080/api/delete/${card}`, { id: card })
+    await axios.delete(`${endpoint}:8080/api/delete/${card}`, { id: card })
     dispatch({
       type: 'DELETE_CARD',
       card
