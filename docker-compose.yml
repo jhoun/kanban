@@ -9,17 +9,14 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    expose:
-      - "3000"
     ports:
-      - "3000:3000"
+      - ${REACT_HOST_PORT}:${REACT_CONTAINER_PORT}
     volumes:
       - ./frontend:/app/frontend
       - node-modules:/app/frontend/node_modules
     links:
       - express-server
     command: ["npm", "start"]
-
 
 volumes:
   node-modules:

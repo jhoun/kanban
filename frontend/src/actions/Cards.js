@@ -1,7 +1,7 @@
 import axios from 'axios';
 let environment = process.env.NODE_ENV;
 let endpoint = environment === 'production' ? process.env.REACT_APP_POSTGRES_HOSTNAME : 'http://localhost';
-console.log('endpoint', endpoint);
+
 export const loadCards = () => {
   return async dispatch => {
     const response = await axios.get(`${endpoint}:8080/api/`);
