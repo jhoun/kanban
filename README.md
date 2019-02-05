@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Docker
 1. Install [Docker](https://www.docker.com/get-started) 
 2. Create `.env` file in your root directory
-  - see example.env 
+    - see example.env 
 3. Run `docker-compose up` in your terminal
 4. View on browser `http://localhost:3000/`
 
