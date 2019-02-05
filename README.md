@@ -6,13 +6,19 @@ Kanban board application to help you track your tasks. Users can create a task, 
 
 These instructions will get you a copy of the project up and running on your local machine for development. 
 
-### Set Up
+## Set Up
 
-1. Run `npm install`
-2. Fill in appropriate information in `development` object in `knexfile-example.js`
-3. Rename `knexfile-example.js`to `knexfile.js`
-4. Run `knex migrate:latest` 
-5. Run `knex seed:run`
-6. Run `npm start`
+### Docker
+1. Install [Docker](https://www.docker.com/get-started) 
+2. Create `.env` file in your root directory
+  - see example.env 
+3. Run `docker-compose up` in your terminal
+4. View on browser `http://localhost:3000/`
+
+### KNEX Migration & Seed
+1. Change into server directory `cd server`
+2. Run `knex migrate:latest` to build tables in Postgres
+3. Run `knex seed:run` to seed data into newly created tables
+
 
 
