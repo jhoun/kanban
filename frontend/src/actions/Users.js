@@ -1,6 +1,7 @@
 import axios from 'axios';
 require('dotenv').config({ path: '../../.env' })
-let endpoint = process.env.REACT_APP_POSTGRES_HOSTNAME || 'http://localhost';
+let environment = process.env.NODE_ENV;
+let endpoint = environment === 'production' ? process.env.REACT_APP_POSTGRES_HOSTNAME : 'http://localhost';
 
 export const loadUsers = () => {
   return async dispatch => {
