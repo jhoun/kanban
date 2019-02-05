@@ -1,0 +1,29 @@
+version: "3"
+services:
+  express-server:
+    container_name: server
+    build: ./server
+    ports:
+      - ${EXPRESS_HOST_PORT}:${EXPRESS_CONTAINER_PORT}
+    env_file: .env
+    environment:
+      POSTGRES_HOSTNAME: ${POSTGRES_HOSTNAME}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      ENVIRONMENT: production
+      NODE_ENV: production
+    command: ["npm", "run", "dev"]
+
+  frontend:
+    container_name: sample-app-prod
+    build:
+      context: ./frontend
+      dockerfile: prod.Dockerfile
+    ports:
+      - "80:80"
+    links:
+      - express-server
+
+
+
