@@ -9,6 +9,8 @@ services:
     volumes:
       - ./server:/src/app/
     env_file: .env
+    environment:
+      POSTGRES_HOSTNAME_DEV: 'postgres-primary-db'
     ports:
       - "${EXPRESS_HOST_PORT}:${EXPRESS_CONTAINER_PORT}"
     networks:
