@@ -17,9 +17,9 @@ services:
 
   frontend:
     container_name: sample-app-prod
-     build:
+    build:
       context: ./frontend
-      dockerfile: Dockerfile
+      dockerfile: prod.Dockerfile
     ports:
       - "80:80"
     links:
