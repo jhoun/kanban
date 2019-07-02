@@ -1,4 +1,4 @@
-FROM node:10.0
+FROM node:10.15.1-alpine
 
 WORKDIR /app/frontend
 COPY package.json /app/frontend

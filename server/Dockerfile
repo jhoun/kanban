@@ -1,5 +1,5 @@
 # Built from Node latest Alpine
-FROM node:10.0
+FROM node:10.15.1-alpine
 
 # Specify an optional argument with a default value
 ARG app_directory=/src/app
@@ -19,4 +19,4 @@ RUN npm rebuild node-sass
 COPY . .
 
 # Start the node application as you normally would
-CMD ["node", "server.js"]
+CMD ["npm", "run", "dev"]

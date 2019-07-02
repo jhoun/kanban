@@ -1,19 +1,17 @@
 version: "3"
 services:
   express-server:
-    container_name: server
     build: ./server
-    ports:
-      - ${EXPRESS_HOST_PORT}:${EXPRESS_CONTAINER_PORT}
+    image: ${DOCKERHUB_NAME}/${IMAGE_NAME}:${IMAGE_VERSION}
+    container_name: ${IMAGE_NAME}
     env_file: .env
     environment:
-      POSTGRES_HOSTNAME: ${POSTGRES_HOSTNAME}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
       ENVIRONMENT: production
       NODE_ENV: production
-    command: ["npm", "run", "dev"]
+    ports:
+      - "${EXPRESS_HOST_PORT}:${EXPRESS_CONTAINER_PORT}"
+    networks:
+      - my-app-network
 
   frontend:
     container_name: sample-app-prod
@@ -25,5 +23,5 @@ services:
     links:
       - express-server
 
-
-
+networks:
+  my-app-network:

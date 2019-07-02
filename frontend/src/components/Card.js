@@ -47,7 +47,7 @@ class Cards extends Component {
           <div className={`modify-btn-${this.props.status}`} onClick={this.handleOpenModal}>Edit</div>
           <ReactModal
             isOpen={this.state.showModal}
-            contentLabel="Modal" className="modal"
+            contentLabel="Modal" className="modal-card"
             overlayClassName="overlay"
             onRequestClose={this.handleCloseModal}
             shouldCloseOnOverlayClick={true}

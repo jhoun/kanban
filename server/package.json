@@ -32,12 +32,6 @@
       "server"
     ]
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "engines": {
     "node": "11.4.0",
     "npm": "6.5.0"
